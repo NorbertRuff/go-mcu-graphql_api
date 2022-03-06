@@ -4,6 +4,7 @@ First start mysql server with docker:
 docker-compose up -d
 ```
 
+
 finally run the server: 
 
 ```bash
