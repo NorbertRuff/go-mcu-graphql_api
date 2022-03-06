@@ -122,7 +122,6 @@ VALUES
         ('2d8f7a06-6b4c-4f7b-9e62-22da24c863a0', 'WandaVision',  '2021-01-15', '2021-03-05', 1, 9, 'Marvel Studios captivating new series "WandaVision" which premieres in early 2021 on Disney+. Starring Elizabeth Olsen and Paul Bettany, "WandaVision" marks the first series from Marvel Studios streaming exclusively on Disney+. The series is a blend of classic television and the Marvel Cinematic Universe in which Wanda Maximoff and Vision—two super-powered beings living idealized suburban lives—begin to suspect that everything is not as it seems', 'https://raw.githubusercontent.com/NorbertRuff/go-mcu-graphql_api/master/covers/wandavision.jpg', 'https://players.brightcove.net/5359769168001/BJemW31x6g_default/index.html?videoId=6215509803001', 'Matt Shakman', 4, null, 'tt9140560', '17b3b7e4-f316-45a5-b262-f2c095fdaffc');
 
 
-
 --
 ALTER TABLE ONLY movies
     ADD CONSTRAINT fk_movies_published FOREIGN KEY (published_by) REFERENCES users(user_id);
