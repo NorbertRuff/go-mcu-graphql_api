@@ -1,7 +1,8 @@
 
 <div align="center">
 
-##---|Welcome to my Go MCU api Project 👋|---
+  
+## ---|Welcome to my Go MCU api Project 👋|---
 
 
 <img src="https://raw.githubusercontent.com/NorbertRuff/go-mcu-graphql_api/master/blob/logos/gopher2.png" width="350">
@@ -24,7 +25,7 @@ This was created purely just for fun, and experimenting with the tech stacks.
 [TECH STACK](#tech-stack) •
 [SCREENSHOTS](#screenshots) •
 [CONTRIBUTING](#contributing) •
-[ABOUT ME](#A passionate developer from Hungary)
+[ABOUT ME](#-about-me)
 •
 
 </div>
