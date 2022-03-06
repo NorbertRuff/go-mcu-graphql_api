@@ -1,0 +1,118 @@
+type Link {
+    link_id: ID!
+    title: String!
+    address: String!
+    PublishedBy: User!
+}
+
+type Movie {
+    movie_id: ID!
+    title: String!
+    release_date: String!
+    box_office: String!
+    duration : Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    chronology : Int!
+    post_credit_scenes: String!
+    imdb_id: String!
+    published_by: User!
+}
+type TvShow {
+    show_id: ID!
+    title: String!
+    release_date: String!
+    last_aired_date: String!
+    number_seasons: Int!
+    number_episodes: Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    imdb_id: String!
+    published_by: User!
+}
+
+type User {
+    user_id: ID!
+    email: String!
+    username  : String!
+    password  : String!
+    firstname : String!
+    lastname  : String!
+    credit    : Int   !
+}
+
+type Query {
+    links: [Link!]!
+    movies: [Movie!]!
+    tvShows: [TvShow!]!
+}
+
+input NewLink {
+    title: String!
+    address: String!
+}
+
+input NewMovie {
+    title: String!
+    release_date: String!
+    box_office: String!
+    duration : Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    chronology : Int!
+    post_credit_scenes: String!
+    imdb_id: String!
+}
+
+input NewTvShow {
+    title: String!
+    release_date: String!
+    last_aired_date: String!
+    number_seasons: Int!
+    number_episodes: Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    imdb_id: String!
+}
+
+input RefreshTokenInput{
+    token: String!
+}
+
+input NewUser {
+    username:  String!
+    password:  String!
+    email: String!
+    firstname: String!
+    lastName:  String!
+}
+
+input Login {
+    username: String!
+    password: String!
+}
+
+type Mutation {
+    createLink(variables: NewLink!): Link!
+    createUser(variables: NewUser!): String!
+    createMovie(variables: NewMovie!): Movie!
+    createTvShow(variables: NewTvShow!): TvShow!
+    login(variables: Login!): String!
+    refreshToken(variables: RefreshTokenInput!): String!
+}
