@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/norbertruff/go-graphql/graphql/generated/gqlgen"
-	"github.com/norbertruff/go-graphql/graphql/models"
+	"github.com/norbertruff/go-graphql/graphql/model"
 	auth2 "github.com/norbertruff/go-graphql/internal/pkg/auth"
 	customError "github.com/norbertruff/go-graphql/internal/pkg/errors"
 	linkService "github.com/norbertruff/go-graphql/internal/services/links"
@@ -18,35 +18,46 @@ import (
 	userService "github.com/norbertruff/go-graphql/internal/services/users"
 )
 
-func (r *mutationResolver) CreateLink(ctx context.Context, variables models.NewLink) (*models.Link, error) {
+func (r *linkResolver) User(ctx context.Context, obj *model.Link) (*model.User, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
-		return &models.Link{}, fmt.Errorf("access denied")
+		return &model.User{}, fmt.Errorf("access denied")
 	}
-	graphqlUser := &models.User{
-		UserID:   user.UserID,
-		Username: user.Username,
+	return &model.User{
+		UserID: obj.UserID,
+	}, nil
+}
+
+func (r *movieResolver) User(ctx context.Context, obj *model.Movie) (*model.User, error) {
+	user := auth2.ForContext(ctx)
+	if user == nil {
+		return &model.User{}, fmt.Errorf("access denied")
 	}
-	var newLink = new(models.Link)
-	newLink.LinkID = uuid.New().String()
-	newLink.PublishedBy = graphqlUser
-	newLink.Title = variables.Title
-	newLink.Address = variables.Address
+	return user, nil
+}
+
+func (r *mutationResolver) CreateLink(ctx context.Context, variables model.NewLink) (*model.Link, error) {
+	user := auth2.ForContext(ctx)
+	if user == nil {
+		return &model.Link{}, fmt.Errorf("access denied")
+	}
+
+	newLink := &model.Link{
+		LinkID:  uuid.New().String(),
+		Title:   variables.Title,
+		Address: variables.Address,
+		UserID:  user.UserID,
+	}
 
 	err := linkService.Save(newLink)
 	if err != nil {
 		return nil, err
 	}
-	return &models.Link{
-			LinkID:      newLink.LinkID,
-			Title:       variables.Title,
-			Address:     variables.Address,
-			PublishedBy: graphqlUser,
-		},
-		nil
+
+	return newLink, nil
 }
 
-func (r *mutationResolver) CreateUser(ctx context.Context, variables models.NewUser) (string, error) {
+func (r *mutationResolver) CreateUser(ctx context.Context, variables model.NewUser) (string, error) {
 	err := userService.Create(variables)
 	if err != nil {
 		return "", err
@@ -58,19 +69,14 @@ func (r *mutationResolver) CreateUser(ctx context.Context, variables models.NewU
 	return token, nil
 }
 
-func (r *mutationResolver) CreateMovie(ctx context.Context, variables models.NewMovie) (*models.Movie, error) {
+func (r *mutationResolver) CreateMovie(ctx context.Context, variables model.NewMovie) (*model.Movie, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
-		return &models.Movie{}, fmt.Errorf("access denied")
+		return &model.Movie{}, fmt.Errorf("access denied")
 	}
 
-	grahpqlUser := &models.User{
-		UserID:   user.UserID,
-		Username: user.Username,
-	}
-
-	newMovie := &models.Movie{
-		MovieID:          new(uuid.UUID).String(),
+	newMovie := &model.Movie{
+		MovieID:          uuid.New().String(),
 		Title:            variables.Title,
 		ReleaseDate:      variables.ReleaseDate,
 		BoxOffice:        variables.BoxOffice,
@@ -84,29 +90,29 @@ func (r *mutationResolver) CreateMovie(ctx context.Context, variables models.New
 		Chronology:       variables.Chronology,
 		PostCreditScenes: variables.PostCreditScenes,
 		ImdbID:           variables.ImdbID,
-		PublishedBy:      grahpqlUser,
+		UserID:           user.UserID,
 	}
-	r.movies = append(r.movies, newMovie)
-	err := movieService.Save(*newMovie)
+	err := movieService.Save(newMovie)
 	if err != nil {
 		return nil, err
 	}
+	//r.movies = append(r.movies, newMovie)
 
 	return newMovie, nil
 }
 
-func (r *mutationResolver) CreateTvShow(ctx context.Context, variables models.NewTvShow) (*models.TvShow, error) {
+func (r *mutationResolver) CreateTvShow(ctx context.Context, variables model.NewTvShow) (*model.TvShow, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
-		return &models.TvShow{}, fmt.Errorf("access denied")
+		return &model.TvShow{}, fmt.Errorf("access denied")
 	}
 
-	graphQlUser := &models.User{
+	graphQlUser := &model.User{
 		UserID:   user.UserID,
 		Username: user.Username,
 	}
 
-	newTvShow := &models.TvShow{
+	newTvShow := &model.TvShow{
 		ShowID:         new(uuid.UUID).String(),
 		Title:          variables.Title,
 		ReleaseDate:    variables.ReleaseDate,
@@ -120,14 +126,18 @@ func (r *mutationResolver) CreateTvShow(ctx context.Context, variables models.Ne
 		Phase:          variables.Phase,
 		Saga:           variables.Saga,
 		ImdbID:         variables.ImdbID,
-		PublishedBy:    graphQlUser,
+		UserID:         graphQlUser.UserID,
 	}
-
+	r.shows = append(r.shows, newTvShow)
+	err := tvShowService.Save(newTvShow)
+	if err != nil {
+		return nil, err
+	}
 	return newTvShow, nil
 }
 
-func (r *mutationResolver) Login(ctx context.Context, variables models.Login) (string, error) {
-	var user models.User
+func (r *mutationResolver) Login(ctx context.Context, variables model.Login) (string, error) {
+	var user model.User
 	user.Username = variables.Username
 	user.Password = variables.Password
 	correct := userService.Authenticate(user)
@@ -141,7 +151,7 @@ func (r *mutationResolver) Login(ctx context.Context, variables models.Login) (s
 	return token, nil
 }
 
-func (r *mutationResolver) RefreshToken(ctx context.Context, variables models.RefreshTokenInput) (string, error) {
+func (r *mutationResolver) RefreshToken(ctx context.Context, variables model.RefreshTokenInput) (string, error) {
 	username, err := auth2.ParseToken(variables.Token)
 	if err != nil {
 		return "", fmt.Errorf("access denied")
@@ -153,7 +163,7 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, variables models.Re
 	return token, nil
 }
 
-func (r *queryResolver) Links(ctx context.Context) ([]*models.Link, error) {
+func (r *queryResolver) Links(ctx context.Context) ([]*model.Link, error) {
 	dbLinks, err := linkService.GetAll()
 	if err != nil {
 		return nil, err
@@ -161,7 +171,7 @@ func (r *queryResolver) Links(ctx context.Context) ([]*models.Link, error) {
 	return dbLinks, nil
 }
 
-func (r *queryResolver) Movies(ctx context.Context) ([]*models.Movie, error) {
+func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
 	dbMovies, err := movieService.GetAll()
 	if err != nil {
 		return nil, err
@@ -169,7 +179,7 @@ func (r *queryResolver) Movies(ctx context.Context) ([]*models.Movie, error) {
 	return dbMovies, nil
 }
 
-func (r *queryResolver) TvShows(ctx context.Context) ([]*models.TvShow, error) {
+func (r *queryResolver) TvShows(ctx context.Context) ([]*model.TvShow, error) {
 	dbShows, err := tvShowService.GetAll()
 	if err != nil {
 		return nil, err
@@ -177,11 +187,31 @@ func (r *queryResolver) TvShows(ctx context.Context) ([]*models.TvShow, error) {
 	return dbShows, nil
 }
 
+func (r *tvShowResolver) User(ctx context.Context, obj *model.TvShow) (*model.User, error) {
+	user := auth2.ForContext(ctx)
+	if user == nil {
+		return &model.User{}, fmt.Errorf("access denied")
+	}
+	return user, nil
+}
+
+// Link returns gqlgen.LinkResolver implementation.
+func (r *Resolver) Link() gqlgen.LinkResolver { return &linkResolver{r} }
+
+// Movie returns gqlgen.MovieResolver implementation.
+func (r *Resolver) Movie() gqlgen.MovieResolver { return &movieResolver{r} }
+
 // Mutation returns gqlgen.MutationResolver implementation.
 func (r *Resolver) Mutation() gqlgen.MutationResolver { return &mutationResolver{r} }
 
 // Query returns gqlgen.QueryResolver implementation.
 func (r *Resolver) Query() gqlgen.QueryResolver { return &queryResolver{r} }
 
+// TvShow returns gqlgen.TvShowResolver implementation.
+func (r *Resolver) TvShow() gqlgen.TvShowResolver { return &tvShowResolver{r} }
+
+type linkResolver struct{ *Resolver }
+type movieResolver struct{ *Resolver }
 type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
+type tvShowResolver struct{ *Resolver }
