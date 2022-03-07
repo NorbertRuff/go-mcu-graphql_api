@@ -13,8 +13,15 @@
 <div align="center">
 
 I started learning GO and Graphql, and wanted to give a try how they can work together,
-and this little project came out of it.  
+and this little project came out of it.
+
+You can register a user in a db using GraphQl, create, query the db wit authentication.
+
+It uses PostgresSQL db in a docker.
+
 This was created purely just for fun, and experimenting with the tech stacks.
+
+Hope you like it and helps you in some way.
 
 
 [![Version](https://img.shields.io/badge/version-v0.8-blue.svg)](https://img.shields.io/badge/version-v0.8-blue.svg?cacheSeconds=2592000)
@@ -41,7 +48,14 @@ TODO
 
 ## Screenshots
 
-TODO
+
+<img src="https://raw.githubusercontent.com/NorbertRuff/go-mcu-graphql_api/master/blob/screenshot/screenshot.png">
+
+
+
+<img src="https://raw.githubusercontent.com/NorbertRuff/go-mcu-graphql_api/master/blob/screenshot/screenshot2.png">
+
+
 
 ## Features
 <div align="center">
@@ -67,7 +81,7 @@ TODO
 **Packages used**
 
 - github.com/99designs/gqlgen for GraphQl generator
-- jwt-g
+- jwt-go
 - Go chi
 - gqlparser
 - gorm
@@ -109,12 +123,13 @@ or
 
 To run this project, you will need to add the following environment variables to your .env file
 
+`PORT=` -> your localhost port for the qraphql playground defaults to 8080  
 
-`DB_HOST=`  
-`DB_PORT=`  
-`DB_USER=`  
-`DB_PASSWORD=`  
-`DB_NAME=`
+`DB_HOST=`  -> localhost  
+`DB_PORT=`  -> 5432  
+`DB_USER=`  -> anything   
+`DB_PASSWORD=`  -> anything  
+`DB_NAME=`-> anything  
 
 
 ## Run Locally
@@ -158,11 +173,63 @@ Now navigate to https://localhost:8080 you can see graphiql playground and query
 
 
 ## Commands
+For example:
 
-Generate resolvers and types from gql schema configured in gqlgen.yml
+You can create a user, this command gives back a JWT Token
+
+```graphql
+mutation createuser {
+  createUser(
+    variables: {
+      username: "bob"
+      password: "bob"
+      email: "bob"
+      firstname: "bob"
+      lastName: "bob"
+    }
+  )
+}
+```
+Login an existing user, this command gives back a JWT Token
+
+
+```graphql
+mutation {
+    login(variables: { username: "bob", password: "bob" })
+}
+```
+
+Query all the movies requires: JWT token
+
+```graphql
+query {
+    movies
+    {
+        imdb_id
+        movie_id
+        title
+        overview
+        duration
+        user {
+            user_id
+            username
+        }
+    }
+
+}
+```
+
+
+You can generate resolvers and types from gql schema configured in gqlgen.yml
 
 ```bash
 go run github.com/99designs/gqlgen generate 
+```
+
+or 
+
+```bash
+go generate 
 ```
 
 
@@ -173,7 +240,8 @@ One great aspect of Golang is, that you can start go applications via ```go run 
 Build your app and synthesize your stacks.
 
 > Generates a `.build/` directory with the compiled files.
-> 
+
+
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/NorbertRuff/go-mcu-graphql_api/master/blob/logos/gopher4.png" width="350">
