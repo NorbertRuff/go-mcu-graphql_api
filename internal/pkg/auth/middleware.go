@@ -2,7 +2,7 @@ package auth
 
 import (
 	"context"
-	"github.com/norbertruff/go-graphql/graphql/models"
+	"github.com/norbertruff/go-graphql/graphql/model"
 	"github.com/norbertruff/go-graphql/internal/services/users"
 	"net/http"
 )
@@ -33,13 +33,13 @@ func Middleware() func(http.Handler) http.Handler {
 			}
 
 			// create user and check if user exists in db
-			user := models.User{Username: username}
-			_, err = user_service.GetUserIdByUsername(username)
+			user := model.User{Username: username}
+			id, err := user_service.GetUserIdByUsername(username)
 			if err != nil {
 				next.ServeHTTP(w, r)
 				return
 			}
-			//user.ID = strconv.Itoa(id)
+			user.UserID = id
 			// put it in context
 			ctx := context.WithValue(r.Context(), userCtxKey, &user)
 
@@ -51,7 +51,7 @@ func Middleware() func(http.Handler) http.Handler {
 }
 
 // ForContext finds the user from the context. REQUIRES Middleware to have run.
-func ForContext(ctx context.Context) *models.User {
-	raw, _ := ctx.Value(userCtxKey).(*models.User)
+func ForContext(ctx context.Context) *model.User {
+	raw, _ := ctx.Value(userCtxKey).(*model.User)
 	return raw
 }
