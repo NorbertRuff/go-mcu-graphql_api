@@ -3,8 +3,8 @@ package user_service
 import (
 	"fmt"
 	"github.com/google/uuid"
-	"github.com/norbertruff/go-graphql/graphql/generated/models"
-	_ "github.com/norbertruff/go-graphql/graphql/generated/models"
+	"github.com/norbertruff/go-graphql/graphql/models"
+	_ "github.com/norbertruff/go-graphql/graphql/models"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
 	"github.com/norbertruff/go-graphql/internal/pkg/utils"
 	"log"

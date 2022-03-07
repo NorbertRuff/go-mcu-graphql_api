@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/norbertruff/go-graphql/graphql/generated/gqlgen"
-	"github.com/norbertruff/go-graphql/graphql/generated/models"
+	"github.com/norbertruff/go-graphql/graphql/models"
 	auth2 "github.com/norbertruff/go-graphql/internal/pkg/auth"
 	customError "github.com/norbertruff/go-graphql/internal/pkg/errors"
 	linkService "github.com/norbertruff/go-graphql/internal/services/links"
@@ -18,7 +18,6 @@ import (
 	userService "github.com/norbertruff/go-graphql/internal/services/users"
 )
 
-// CreateLink Creates a new link.
 func (r *mutationResolver) CreateLink(ctx context.Context, variables models.NewLink) (*models.Link, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
@@ -47,7 +46,6 @@ func (r *mutationResolver) CreateLink(ctx context.Context, variables models.NewL
 		nil
 }
 
-// CreateUser Creates a new user.
 func (r *mutationResolver) CreateUser(ctx context.Context, variables models.NewUser) (string, error) {
 	err := userService.Create(variables)
 	if err != nil {
@@ -60,7 +58,6 @@ func (r *mutationResolver) CreateUser(ctx context.Context, variables models.NewU
 	return token, nil
 }
 
-// CreateMovie Creates a new movie.
 func (r *mutationResolver) CreateMovie(ctx context.Context, variables models.NewMovie) (*models.Movie, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
@@ -98,14 +95,13 @@ func (r *mutationResolver) CreateMovie(ctx context.Context, variables models.New
 	return newMovie, nil
 }
 
-// CreateTvShow Creates a new Tv show.
 func (r *mutationResolver) CreateTvShow(ctx context.Context, variables models.NewTvShow) (*models.TvShow, error) {
 	user := auth2.ForContext(ctx)
 	if user == nil {
 		return &models.TvShow{}, fmt.Errorf("access denied")
 	}
 
-	grahpqlUser := &models.User{
+	graphQlUser := &models.User{
 		UserID:   user.UserID,
 		Username: user.Username,
 	}
@@ -124,13 +120,12 @@ func (r *mutationResolver) CreateTvShow(ctx context.Context, variables models.Ne
 		Phase:          variables.Phase,
 		Saga:           variables.Saga,
 		ImdbID:         variables.ImdbID,
-		PublishedBy:    grahpqlUser,
+		PublishedBy:    graphQlUser,
 	}
 
 	return newTvShow, nil
 }
 
-// Login validating user and sending back jwt token.
 func (r *mutationResolver) Login(ctx context.Context, variables models.Login) (string, error) {
 	var user models.User
 	user.Username = variables.Username
@@ -146,7 +141,6 @@ func (r *mutationResolver) Login(ctx context.Context, variables models.Login) (s
 	return token, nil
 }
 
-// RefreshToken refreshes token.
 func (r *mutationResolver) RefreshToken(ctx context.Context, variables models.RefreshTokenInput) (string, error) {
 	username, err := auth2.ParseToken(variables.Token)
 	if err != nil {
@@ -159,7 +153,6 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, variables models.Re
 	return token, nil
 }
 
-// Links returns all links.
 func (r *queryResolver) Links(ctx context.Context) ([]*models.Link, error) {
 	dbLinks, err := linkService.GetAll()
 	if err != nil {
@@ -168,7 +161,6 @@ func (r *queryResolver) Links(ctx context.Context) ([]*models.Link, error) {
 	return dbLinks, nil
 }
 
-// Movies returns all tv movies.
 func (r *queryResolver) Movies(ctx context.Context) ([]*models.Movie, error) {
 	dbMovies, err := movieService.GetAll()
 	if err != nil {
@@ -177,7 +169,6 @@ func (r *queryResolver) Movies(ctx context.Context) ([]*models.Movie, error) {
 	return dbMovies, nil
 }
 
-// TvShows returns all tv shows.
 func (r *queryResolver) TvShows(ctx context.Context) ([]*models.TvShow, error) {
 	dbShows, err := tvShowService.GetAll()
 	if err != nil {

@@ -2,7 +2,7 @@ package tvshow_service
 
 import (
 	"fmt"
-	"github.com/norbertruff/go-graphql/graphql/generated/models"
+	"github.com/norbertruff/go-graphql/graphql/models"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
 	"log"
 )

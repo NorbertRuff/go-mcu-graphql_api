@@ -2,7 +2,7 @@ package auth
 
 import (
 	"context"
-	"github.com/norbertruff/go-graphql/graphql/generated/models"
+	"github.com/norbertruff/go-graphql/graphql/models"
 	"github.com/norbertruff/go-graphql/internal/services/users"
 	"net/http"
 )

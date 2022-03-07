@@ -12,7 +12,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/norbertruff/go-graphql/graphql/generated/models"
+	"github.com/norbertruff/go-graphql/graphql/models"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -708,7 +708,7 @@ func (ec *executionContext) field_Mutation_createLink_args(ctx context.Context, 
 	args := map[string]interface{}{}
 	var arg0 models.NewLink
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNNewLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewLink(ctx, tmp)
+		arg0, err = ec.unmarshalNNewLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewLink(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -722,7 +722,7 @@ func (ec *executionContext) field_Mutation_createMovie_args(ctx context.Context,
 	args := map[string]interface{}{}
 	var arg0 models.NewMovie
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNNewMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewMovie(ctx, tmp)
+		arg0, err = ec.unmarshalNNewMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewMovie(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -736,7 +736,7 @@ func (ec *executionContext) field_Mutation_createTvShow_args(ctx context.Context
 	args := map[string]interface{}{}
 	var arg0 models.NewTvShow
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNNewTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewTvShow(ctx, tmp)
+		arg0, err = ec.unmarshalNNewTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewTvShow(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -750,7 +750,7 @@ func (ec *executionContext) field_Mutation_createUser_args(ctx context.Context, 
 	args := map[string]interface{}{}
 	var arg0 models.NewUser
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNNewUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewUser(ctx, tmp)
+		arg0, err = ec.unmarshalNNewUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewUser(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -764,7 +764,7 @@ func (ec *executionContext) field_Mutation_login_args(ctx context.Context, rawAr
 	args := map[string]interface{}{}
 	var arg0 models.Login
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNLogin2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLogin(ctx, tmp)
+		arg0, err = ec.unmarshalNLogin2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLogin(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -778,7 +778,7 @@ func (ec *executionContext) field_Mutation_refreshToken_args(ctx context.Context
 	args := map[string]interface{}{}
 	var arg0 models.RefreshTokenInput
 	if tmp, ok := rawArgs["variables"]; ok {
-		arg0, err = ec.unmarshalNRefreshTokenInput2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐRefreshTokenInput(ctx, tmp)
+		arg0, err = ec.unmarshalNRefreshTokenInput2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐRefreshTokenInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -970,7 +970,7 @@ func (ec *executionContext) _Link_PublishedBy(ctx context.Context, field graphql
 	}
 	res := resTmp.(*models.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Movie_movie_id(ctx context.Context, field graphql.CollectedField, obj *models.Movie) (ret graphql.Marshaler) {
@@ -1480,7 +1480,7 @@ func (ec *executionContext) _Movie_published_by(ctx context.Context, field graph
 	}
 	res := resTmp.(*models.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Mutation_createLink(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1521,7 +1521,7 @@ func (ec *executionContext) _Mutation_createLink(ctx context.Context, field grap
 	}
 	res := resTmp.(*models.Link)
 	fc.Result = res
-	return ec.marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLink(ctx, field.Selections, res)
+	return ec.marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLink(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Mutation_createUser(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1603,7 +1603,7 @@ func (ec *executionContext) _Mutation_createMovie(ctx context.Context, field gra
 	}
 	res := resTmp.(*models.Movie)
 	fc.Result = res
-	return ec.marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovie(ctx, field.Selections, res)
+	return ec.marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovie(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Mutation_createTvShow(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1644,7 +1644,7 @@ func (ec *executionContext) _Mutation_createTvShow(ctx context.Context, field gr
 	}
 	res := resTmp.(*models.TvShow)
 	fc.Result = res
-	return ec.marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShow(ctx, field.Selections, res)
+	return ec.marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShow(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Mutation_login(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1760,7 +1760,7 @@ func (ec *executionContext) _Query_links(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]*models.Link)
 	fc.Result = res
-	return ec.marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLinkᚄ(ctx, field.Selections, res)
+	return ec.marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLinkᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_movies(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1794,7 +1794,7 @@ func (ec *executionContext) _Query_movies(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*models.Movie)
 	fc.Result = res
-	return ec.marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovieᚄ(ctx, field.Selections, res)
+	return ec.marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovieᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_tvShows(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1828,7 +1828,7 @@ func (ec *executionContext) _Query_tvShows(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.([]*models.TvShow)
 	fc.Result = res
-	return ec.marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShowᚄ(ctx, field.Selections, res)
+	return ec.marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShowᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2373,7 +2373,7 @@ func (ec *executionContext) _TvShow_published_by(ctx context.Context, field grap
 	}
 	res := resTmp.(*models.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _User_user_id(ctx context.Context, field graphql.CollectedField, obj *models.User) (ret graphql.Marshaler) {
@@ -4662,11 +4662,11 @@ func (ec *executionContext) marshalNInt2int(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) marshalNLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLink(ctx context.Context, sel ast.SelectionSet, v models.Link) graphql.Marshaler {
+func (ec *executionContext) marshalNLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLink(ctx context.Context, sel ast.SelectionSet, v models.Link) graphql.Marshaler {
 	return ec._Link(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.Link) graphql.Marshaler {
+func (ec *executionContext) marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.Link) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -4690,7 +4690,7 @@ func (ec *executionContext) marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLink(ctx, sel, v[i])
+			ret[i] = ec.marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLink(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -4703,7 +4703,7 @@ func (ec *executionContext) marshalNLink2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo�
 	return ret
 }
 
-func (ec *executionContext) marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLink(ctx context.Context, sel ast.SelectionSet, v *models.Link) graphql.Marshaler {
+func (ec *executionContext) marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLink(ctx context.Context, sel ast.SelectionSet, v *models.Link) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -4713,15 +4713,15 @@ func (ec *executionContext) marshalNLink2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgr
 	return ec._Link(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNLogin2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐLogin(ctx context.Context, v interface{}) (models.Login, error) {
+func (ec *executionContext) unmarshalNLogin2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐLogin(ctx context.Context, v interface{}) (models.Login, error) {
 	return ec.unmarshalInputLogin(ctx, v)
 }
 
-func (ec *executionContext) marshalNMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovie(ctx context.Context, sel ast.SelectionSet, v models.Movie) graphql.Marshaler {
+func (ec *executionContext) marshalNMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovie(ctx context.Context, sel ast.SelectionSet, v models.Movie) graphql.Marshaler {
 	return ec._Movie(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovieᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.Movie) graphql.Marshaler {
+func (ec *executionContext) marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovieᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.Movie) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -4745,7 +4745,7 @@ func (ec *executionContext) marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovie(ctx, sel, v[i])
+			ret[i] = ec.marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovie(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -4758,7 +4758,7 @@ func (ec *executionContext) marshalNMovie2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo�
 	return ret
 }
 
-func (ec *executionContext) marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐMovie(ctx context.Context, sel ast.SelectionSet, v *models.Movie) graphql.Marshaler {
+func (ec *executionContext) marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐMovie(ctx context.Context, sel ast.SelectionSet, v *models.Movie) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -4768,23 +4768,23 @@ func (ec *executionContext) marshalNMovie2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑg
 	return ec._Movie(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNNewLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewLink(ctx context.Context, v interface{}) (models.NewLink, error) {
+func (ec *executionContext) unmarshalNNewLink2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewLink(ctx context.Context, v interface{}) (models.NewLink, error) {
 	return ec.unmarshalInputNewLink(ctx, v)
 }
 
-func (ec *executionContext) unmarshalNNewMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewMovie(ctx context.Context, v interface{}) (models.NewMovie, error) {
+func (ec *executionContext) unmarshalNNewMovie2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewMovie(ctx context.Context, v interface{}) (models.NewMovie, error) {
 	return ec.unmarshalInputNewMovie(ctx, v)
 }
 
-func (ec *executionContext) unmarshalNNewTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewTvShow(ctx context.Context, v interface{}) (models.NewTvShow, error) {
+func (ec *executionContext) unmarshalNNewTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewTvShow(ctx context.Context, v interface{}) (models.NewTvShow, error) {
 	return ec.unmarshalInputNewTvShow(ctx, v)
 }
 
-func (ec *executionContext) unmarshalNNewUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐNewUser(ctx context.Context, v interface{}) (models.NewUser, error) {
+func (ec *executionContext) unmarshalNNewUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐNewUser(ctx context.Context, v interface{}) (models.NewUser, error) {
 	return ec.unmarshalInputNewUser(ctx, v)
 }
 
-func (ec *executionContext) unmarshalNRefreshTokenInput2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐRefreshTokenInput(ctx context.Context, v interface{}) (models.RefreshTokenInput, error) {
+func (ec *executionContext) unmarshalNRefreshTokenInput2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐRefreshTokenInput(ctx context.Context, v interface{}) (models.RefreshTokenInput, error) {
 	return ec.unmarshalInputRefreshTokenInput(ctx, v)
 }
 
@@ -4802,11 +4802,11 @@ func (ec *executionContext) marshalNString2string(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) marshalNTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShow(ctx context.Context, sel ast.SelectionSet, v models.TvShow) graphql.Marshaler {
+func (ec *executionContext) marshalNTvShow2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShow(ctx context.Context, sel ast.SelectionSet, v models.TvShow) graphql.Marshaler {
 	return ec._TvShow(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShowᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.TvShow) graphql.Marshaler {
+func (ec *executionContext) marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShowᚄ(ctx context.Context, sel ast.SelectionSet, v []*models.TvShow) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -4830,7 +4830,7 @@ func (ec *executionContext) marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShow(ctx, sel, v[i])
+			ret[i] = ec.marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShow(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -4843,7 +4843,7 @@ func (ec *executionContext) marshalNTvShow2ᚕᚖgithubᚗcomᚋnorbertruffᚋgo
 	return ret
 }
 
-func (ec *executionContext) marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐTvShow(ctx context.Context, sel ast.SelectionSet, v *models.TvShow) graphql.Marshaler {
+func (ec *executionContext) marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐTvShow(ctx context.Context, sel ast.SelectionSet, v *models.TvShow) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -4853,11 +4853,11 @@ func (ec *executionContext) marshalNTvShow2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑ
 	return ec._TvShow(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐUser(ctx context.Context, sel ast.SelectionSet, v models.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2githubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐUser(ctx context.Context, sel ast.SelectionSet, v models.User) graphql.Marshaler {
 	return ec._User(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋgeneratedᚋmodelsᚐUser(ctx context.Context, sel ast.SelectionSet, v *models.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚖgithubᚗcomᚋnorbertruffᚋgoᚑgraphqlᚋgraphqlᚋmodelsᚐUser(ctx context.Context, sel ast.SelectionSet, v *models.User) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
