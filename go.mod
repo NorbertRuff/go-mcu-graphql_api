@@ -2,11 +2,13 @@ module github.com/norbertruff/go-graphql
 
 go 1.13
 
+// go generate go run github.com/99designs/gqlgen generate
 require (
-	github.com/99designs/gqlgen v0.11.3  // indirect
+	github.com/99designs/gqlgen v0.11.3
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-chi/chi v3.3.2+incompatible
 	github.com/google/uuid v1.3.0
+	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.0.1
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 	gorm.io/driver/postgres v1.3.1
