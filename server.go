@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
 	"github.com/norbertruff/go-graphql/graphql"
 	"github.com/norbertruff/go-graphql/graphql/generated/gqlgen"
 	"github.com/norbertruff/go-graphql/internal/pkg/auth"
@@ -18,6 +19,12 @@ import (
 const defaultPort = "8080"
 
 func main() {
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort

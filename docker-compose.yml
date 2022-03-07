@@ -4,10 +4,10 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_DB=marveluniverse
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - '5432:5432'
+      - '5432:${DB_PORT}'
     volumes:
       - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
