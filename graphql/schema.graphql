@@ -2,7 +2,7 @@ type Link {
     link_id: ID!
     title: String!
     address: String!
-    PublishedBy: User!
+    user: User!
 }
 
 type Movie {
@@ -20,7 +20,7 @@ type Movie {
     chronology : Int!
     post_credit_scenes: String!
     imdb_id: String!
-    published_by: User!
+    user: User!
 }
 type TvShow {
     show_id: ID!
@@ -36,7 +36,7 @@ type TvShow {
     phase: Int!
     saga: String!
     imdb_id: String!
-    published_by: User!
+    user: User!
 }
 
 type User {
@@ -58,6 +58,7 @@ type Query {
 input NewLink {
     title: String!
     address: String!
+    user_id: String
 }
 
 input NewMovie {
@@ -74,6 +75,7 @@ input NewMovie {
     chronology : Int!
     post_credit_scenes: String!
     imdb_id: String!
+    user_id: String
 }
 
 input NewTvShow {
@@ -89,6 +91,7 @@ input NewTvShow {
     phase: Int!
     saga: String!
     imdb_id: String!
+    user_id: String
 }
 
 input RefreshTokenInput{

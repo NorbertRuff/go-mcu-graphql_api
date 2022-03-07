@@ -2,7 +2,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/norbertruff/go-graphql/graphql/models"
+	"github.com/norbertruff/go-graphql/graphql/model"
 	"github.com/norbertruff/go-graphql/internal/pkg/db/configs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -27,7 +27,7 @@ func InitDB() {
 }
 
 func MigrateData() {
-	err := DB.AutoMigrate(&models.User{})
+	err := DB.AutoMigrate(&model.User{})
 	if err != nil {
 		panic("failed to migrate database")
 	}

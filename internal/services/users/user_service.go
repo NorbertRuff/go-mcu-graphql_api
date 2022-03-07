@@ -3,22 +3,21 @@ package user_service
 import (
 	"fmt"
 	"github.com/google/uuid"
-	"github.com/norbertruff/go-graphql/graphql/models"
-	_ "github.com/norbertruff/go-graphql/graphql/models"
+	"github.com/norbertruff/go-graphql/graphql/model"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
 	"github.com/norbertruff/go-graphql/internal/pkg/utils"
 	"log"
 )
 
 // Create user in db
-func Create(user models.NewUser) (err error) {
+func Create(user model.NewUser) (err error) {
 	hashedPassword, err := utils.HashPassword(user.Password)
 
 	if err != nil {
 		log.Println(err)
 	}
 
-	newUser := new(models.User)
+	newUser := new(model.User)
 	newUser.UserID = uuid.New().String()
 	newUser.Username = user.Username
 	newUser.Email = user.Email
@@ -35,9 +34,9 @@ func Create(user models.NewUser) (err error) {
 }
 
 // Authenticate check if user is in db and has a matching password
-func Authenticate(user models.User) bool {
-	var row models.User
-	result := database.DB.Where(&models.User{Username: user.Username}).First(&row)
+func Authenticate(user model.User) bool {
+	var row model.User
+	result := database.DB.Where(&model.User{Username: user.Username}).First(&row)
 	if result.Error != nil {
 		fmt.Println(result.Error)
 	}
@@ -45,43 +44,22 @@ func Authenticate(user models.User) bool {
 }
 
 //GetUserIdByUsername check if a user exists in database by given username
-func GetUserIdByUsername(username string) (int, error) {
-	//statement, err := database.Db.Prepare("select ID from Users WHERE Username = ?")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//row := statement.QueryRow(username)
-	//
-	//var Id int
-	//err = row.Scan(&Id)
-	//if err != nil {
-	//	if err != sql.ErrNoRows {
-	//		log.Print(err)
-	//	}
-	//	return 0, err
-	//}
-	//
-	//return Id, nil
-	return 0, nil
+func GetUserIdByUsername(username string) (string, error) {
+	var row model.User
+	result := database.DB.Where(&model.User{Username: username}).First(&row)
+	if result.Error != nil {
+		fmt.Println(result.Error)
+	}
+	return row.UserID, nil
+
 }
 
 // GetUsernameById check if a user exists in database and return the user object.
-func GetUsernameById(userId string) (models.User, error) {
-	//statement, err := database.Db.Prepare("select Username from Users WHERE ID = ?")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//row := statement.QueryRow(userId)
-	//
-	//var username string
-	//err = row.Scan(&username)
-	//if err != nil {
-	//	if err != sql.ErrNoRows {
-	//		log.Print(err)
-	//	}
-	//	return User{}, err
-	//}
-	//
-	//return User{ID: userId, Username: username}, nil
-	return models.User{}, nil
+func GetUsernameById(userId string) (string, error) {
+	var row model.User
+	result := database.DB.Where(&model.User{UserID: userId}).First(&row)
+	if result.Error != nil {
+		fmt.Println(result.Error)
+	}
+	return row.Username, nil
 }
