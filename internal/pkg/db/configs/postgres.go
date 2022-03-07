@@ -34,7 +34,6 @@ func (c PostgresConfig) GetPostgresConnectionInfo() string {
 
 // GetPostgresConfig returns PostgresConfig object
 func GetPostgresConfig() PostgresConfig {
-	fmt.Println(os.Getenv("DB_PORT"))
 	port, err := strconv.Atoi(os.Getenv("DB_PORT"))
 	if err != nil {
 		panic(err)
