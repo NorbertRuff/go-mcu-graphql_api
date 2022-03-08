@@ -1,7 +1,6 @@
 package movie_service
 
 import (
-	"fmt"
 	"github.com/norbertruff/go-graphql/graphql/model"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
 	"log"
@@ -20,7 +19,7 @@ func GetAll() ([]*model.Movie, error) {
 
 	var movies []*model.Movie
 	if result := database.DB.Find(&movies); result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 	}
 
 	return movies, nil

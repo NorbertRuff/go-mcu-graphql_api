@@ -13,6 +13,7 @@ type contextKey struct {
 	name string
 }
 
+// Middleware handles user auth
 func Middleware() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
