@@ -2,6 +2,7 @@ package configs
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -36,7 +37,7 @@ func (c PostgresConfig) GetPostgresConnectionInfo() string {
 func GetPostgresConfig() PostgresConfig {
 	port, err := strconv.Atoi(os.Getenv("DB_PORT"))
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
 	return PostgresConfig{

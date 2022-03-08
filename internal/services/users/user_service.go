@@ -1,7 +1,6 @@
 package user_service
 
 import (
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/norbertruff/go-graphql/graphql/model"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
@@ -38,7 +37,7 @@ func Authenticate(user model.User) bool {
 	var row model.User
 	result := database.DB.Where(&model.User{Username: user.Username}).First(&row)
 	if result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 	}
 	return utils.CheckPasswordHash(user.Password, row.Password)
 }
@@ -48,7 +47,7 @@ func GetUserIdByUsername(username string) (string, error) {
 	var row model.User
 	result := database.DB.Where(&model.User{Username: username}).First(&row)
 	if result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 	}
 	return row.UserID, nil
 
@@ -59,7 +58,7 @@ func GetUsernameById(userId string) (string, error) {
 	var row model.User
 	result := database.DB.Where(&model.User{UserID: userId}).First(&row)
 	if result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 	}
 	return row.Username, nil
 }

@@ -96,7 +96,7 @@ func (r *mutationResolver) CreateMovie(ctx context.Context, variables model.NewM
 	if err != nil {
 		return nil, err
 	}
-	//r.movies = append(r.movies, newMovie)
+	r.movies = append(r.movies, newMovie)
 
 	return newMovie, nil
 }

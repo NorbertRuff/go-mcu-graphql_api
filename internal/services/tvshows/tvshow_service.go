@@ -1,7 +1,6 @@
 package tvshow_service
 
 import (
-	"fmt"
 	"github.com/norbertruff/go-graphql/graphql/model"
 
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
@@ -20,7 +19,7 @@ func Save(tvShow *model.TvShow) error {
 func GetAll() ([]*model.TvShow, error) {
 	var tvShows []*model.TvShow
 	if result := database.DB.Find(&tvShows); result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 		return nil, result.Error
 	}
 

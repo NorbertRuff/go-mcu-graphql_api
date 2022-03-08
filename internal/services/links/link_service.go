@@ -1,7 +1,6 @@
 package link_service
 
 import (
-	"fmt"
 	"github.com/norbertruff/go-graphql/graphql/model"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
 	"log"
@@ -20,7 +19,7 @@ func GetAll() ([]*model.Link, error) {
 
 	var links []*model.Link
 	if result := database.DB.Find(&links); result.Error != nil {
-		fmt.Println(result.Error)
+		log.Println(result.Error)
 		return nil, result.Error
 	}
 

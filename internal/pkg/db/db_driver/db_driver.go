@@ -1,11 +1,11 @@
 package database
 
 import (
-	"fmt"
 	"github.com/norbertruff/go-graphql/graphql/model"
 	"github.com/norbertruff/go-graphql/internal/pkg/db/configs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"log"
 )
 
 var (
@@ -13,6 +13,7 @@ var (
 	PostgresConfig configs.PostgresConfig
 )
 
+// InitDB initializes connection to db based on postgres config
 func InitDB() {
 	// open database
 	PostgresConfig = configs.GetPostgresConfig()
@@ -20,16 +21,17 @@ func InitDB() {
 
 	db, err := gorm.Open(postgres.Open(psqlConnString), &gorm.Config{})
 	if err != nil {
-		panic("failed to connect database")
+		log.Fatal("failed to connect database")
 	}
-	fmt.Println("Connected!")
+	log.Println("Connected!")
 	DB = db
 }
 
+// MigrateData migrates model in db
 func MigrateData() {
 	err := DB.AutoMigrate(&model.User{})
 	if err != nil {
-		panic("failed to migrate database")
+		log.Panic("failed to migrate database")
 	}
-	fmt.Println("Database Migrated")
+	log.Println("Database Migrated")
 }
