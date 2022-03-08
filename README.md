@@ -12,12 +12,12 @@
 
 <div align="center">
 
-I started learning GO and Graphql, and wanted to give a try how they can work together,
+I started learning GO and GraphQL, and wanted to give a try how they can work together,
 and this little project came out of it.
 
-You can register a user in a db using GraphQl, create, query the db wit authentication.
+You can register a user in a db using GraphQL, create, query the db with authentication.
 
-It uses PostgresSQL db in a docker.
+It uses PostgreSQL db in a docker.
 
 This was created purely just for fun, and experimenting with the tech stacks.
 
@@ -39,7 +39,7 @@ Hope you like it and helps you in some way.
 
 ## Project-philosophy
 
-Experiment with GO, learn some new things, in docker / GO / Graphql tech stack
+Experiment with GO, learn some new things, in docker / GO / GraphQL tech stack.
 
 
 ## Demo
