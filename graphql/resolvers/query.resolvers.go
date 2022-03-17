@@ -5,7 +5,7 @@ package resolvers
 
 import (
 	"context"
-	"fmt"
+	userService "github.com/norbertruff/go-graphql/internal/services/users"
 
 	"github.com/norbertruff/go-graphql/graphql/model"
 	gqlgen "github.com/norbertruff/go-graphql/graphql/server"
@@ -31,7 +31,11 @@ func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
 }
 
 func (r *queryResolver) User(ctx context.Context) ([]*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+	dbUsers, err := userService.GetAll()
+	if err != nil {
+		return nil, err
+	}
+	return dbUsers, nil
 }
 
 func (r *queryResolver) TvShows(ctx context.Context) ([]*model.TvShow, error) {
