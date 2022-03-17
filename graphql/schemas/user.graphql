@@ -1,0 +1,9 @@
+type User {
+    user_id: ID!
+    email: String!
+    username  : String!
+    password  : String!
+    firstname : String!
+    lastname  : String!
+    credit    : Int   !
+}

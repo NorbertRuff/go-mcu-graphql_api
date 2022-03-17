@@ -1,0 +1,16 @@
+type TvShow {
+    show_id: ID!
+    title: String!
+    release_date: String!
+    last_aired_date: String!
+    number_seasons: Int!
+    number_episodes: Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    imdb_id: String!
+    user: User!
+}
