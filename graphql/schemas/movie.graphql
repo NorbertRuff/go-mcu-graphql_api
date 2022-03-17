@@ -1,0 +1,17 @@
+type Movie {
+    movie_id: ID!
+    title: String!
+    release_date: String!
+    box_office: String!
+    duration : Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    chronology : Int!
+    post_credit_scenes: String!
+    imdb_id: String!
+    user: User!
+}

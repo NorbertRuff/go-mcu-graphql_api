@@ -62,3 +62,12 @@ func GetUsernameById(userId string) (string, error) {
 	}
 	return row.Username, nil
 }
+
+// GetAll gets all users.
+func GetAll() ([]*model.User, error) {
+	var users []*model.User
+	if result := database.DB.Find(&users); result.Error != nil {
+		log.Println(result.Error)
+	}
+	return users, nil
+}

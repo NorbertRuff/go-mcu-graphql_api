@@ -1,0 +1,8 @@
+type Mutation {
+    createLink(variables: NewLink!): Link!
+    createUser(variables: NewUser!): String!
+    createTvShow(variables: NewTvShow!): TvShow!
+    login(variables: Login!): String!
+    refreshToken(variables: RefreshTokenInput!): String!
+    createMovie(variables: NewMovie!): Movie!
+}

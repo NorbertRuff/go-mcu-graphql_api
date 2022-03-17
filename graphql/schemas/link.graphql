@@ -1,0 +1,6 @@
+type Link {
+    link_id: ID!
+    title: String!
+    address: String!
+    user: User!
+}

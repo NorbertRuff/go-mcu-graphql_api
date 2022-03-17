@@ -1,0 +1,55 @@
+input NewLink {
+    title: String!
+    address: String!
+    user_id: String
+}
+
+input NewMovie {
+    title: String!
+    release_date: String!
+    box_office: String!
+    duration : Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    chronology : Int!
+    post_credit_scenes: String!
+    imdb_id: String!
+    user_id: String
+}
+
+input NewTvShow {
+    title: String!
+    release_date: String!
+    last_aired_date: String!
+    number_seasons: Int!
+    number_episodes: Int!
+    overview: String!
+    cover_url: String!
+    trailer_url: String!
+    directed_by: String!
+    phase: Int!
+    saga: String!
+    imdb_id: String!
+    user_id: String
+}
+
+input RefreshTokenInput{
+    token: String!
+}
+
+input NewUser {
+    username:  String!
+    password:  String!
+    email: String!
+    firstname: String!
+    lastName:  String!
+}
+
+input Login {
+    username: String!
+    password: String!
+}

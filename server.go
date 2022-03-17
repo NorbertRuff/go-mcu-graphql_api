@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/norbertruff/go-graphql/graphql"
-	"github.com/norbertruff/go-graphql/graphql/generated/gqlgen"
+	"github.com/norbertruff/go-graphql/graphql/resolvers"
+	gqlgen "github.com/norbertruff/go-graphql/graphql/server"
 	"github.com/norbertruff/go-graphql/internal/pkg/auth"
 	_ "github.com/norbertruff/go-graphql/internal/pkg/auth"
 	database "github.com/norbertruff/go-graphql/internal/pkg/db/db_driver"
@@ -36,7 +36,7 @@ func main() {
 
 	database.InitDB()
 	//database.Migrate()
-	server := handler.NewDefaultServer(gqlgen.NewExecutableSchema(gqlgen.Config{Resolvers: &graphql.Resolver{}}))
+	server := handler.NewDefaultServer(gqlgen.NewExecutableSchema(gqlgen.Config{Resolvers: &resolvers.Resolver{}}))
 	router.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	router.Handle("/query", server)
 

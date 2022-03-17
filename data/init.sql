@@ -134,4 +134,3 @@ ALTER TABLE ONLY shows
 ALTER TABLE ONLY links
     ADD CONSTRAINT fk_links_published FOREIGN KEY (user_id) REFERENCES users(user_id);
 
-
